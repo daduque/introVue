@@ -102,11 +102,11 @@ Vue.component('ItemProduct', {
     },
     methods : {
         addToCart(){
-            this.$emit('add-to-cart', 'sumar');
+            this.$emit('add-to-cart', this.variants[this.selectedVariant].variantID);
             // this.cart += 1;
         },
         removeToCart(){
-            this.$emit('remove-to-cart', 'restar');
+            this.$emit('remove-to-cart',  this.variants[this.selectedVariant].variantID);
         },
         updateProduct(index){
             this.selectedVariant = index;
