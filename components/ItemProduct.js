@@ -1,4 +1,11 @@
 Vue.component('ItemProduct', {
+    props : {
+        premium : {
+            type : Boolean,
+            required : true,
+            default : false
+        }
+    },
     template : `
     <div class="product row">
 
@@ -24,14 +31,11 @@ Vue.component('ItemProduct', {
             :style="{ 'text-decoration' : 'line-through' }">
             Out of Stock
         </p>
-
-        <div>
-            <ul>
-                <li v-for="item in details" :key="item.id"> 
-                    {{ item }}
-                </li>
-            </ul>
-        </div>
+        <p>
+            Shipping: {{ shipping }}
+        </p>
+        
+        <item-details :details="details"></item-details>
 
         <div>
             <h2>Variants</h2>
@@ -124,6 +128,9 @@ Vue.component('ItemProduct', {
         },
         inStock(){
             return this.variants[this.selectedVariant].variantQuantity
+        },
+        shipping(){
+            return this.premium? 'Free' : '$10.900';
         }
     }
 
