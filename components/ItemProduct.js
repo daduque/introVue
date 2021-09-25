@@ -34,7 +34,7 @@ Vue.component('ItemProduct', {
         <p>
             Shipping: {{ shipping }}
         </p>
-        
+
         <item-details :details="details"></item-details>
 
         <div>
@@ -69,14 +69,7 @@ Vue.component('ItemProduct', {
             class="btn btn-danger w-100  mb-3"
             :class="{ 'disabled-btn': !inStock }"
             >Remove from Cart</button>
-        <div class="cart">
-            <p >
-                    <span class="badge bg-secondary">
 
-                        Cart({{ cart }})
-                    </span>
-            </p>
-        </div>
     </div>
 
 </div>
@@ -104,15 +97,16 @@ Vue.component('ItemProduct', {
                 }
             ],
             sizes : ['S', 'M', 'L', 'XL'],
-            cart : 0
+            
         }
     },
     methods : {
         addToCart(){
-            this.cart += 1;
+            this.$emit('add-to-cart', 'sumar');
+            // this.cart += 1;
         },
         removeToCart(){
-            this.cart > 0? this.cart-- : this.cart;
+            this.$emit('remove-to-cart', 'restar');
         },
         updateProduct(index){
             this.selectedVariant = index;

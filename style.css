@@ -30,7 +30,7 @@ body{
 .cart{
     font-size: 1.5em;
     color: white;
-    
+    text-align: end
 }
 
 .badge{
